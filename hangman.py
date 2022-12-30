@@ -13,8 +13,9 @@ first500 = webpage.split("\n")
 random.shuffle(first500)
 word = random.choice(first500)
 word = word.casefold()
-
+wrong = []
 wordLength = len(word)
+new = list(word)
 
 indicate = []
 for i in range(wordLength):
@@ -26,21 +27,21 @@ def algthm(i):
     letter = input('Try a letter: ')
     
     letter.strip()
-    wrong = []
+    
     
     # add the words to the part that is supposed to be if u answered correct or missed
-    if word.find(letter) == -1:
+    if not letter in new:
         i += 1
         wrong.append(letter) 
     else: # make it go to the part that is correct, the letter should appear where it is in the string.
         for a in range(word.count(letter)):
-            place = word.rfind(letter)
+            place = new.index(letter)
             indicate[place] = letter
-            
+            new[place] = '.'
 
             
 
-    time.sleep(1)
+    time.sleep(.5)
 
     if i == 0:
         print("  ___________.._______ \n| .__________))______| \n| | / /      || \n| | | / \n| |/ \n| | \n| | | \n| | \n| | \n| | | \n| | \n| | \n| | | \n| | \n|=========|_`-' `-' |===| \n|=|=======\ \       '=|=| \n| |        \ \        | | \n: :         \ \       : : \n. .          `'       . . \n")
@@ -63,8 +64,8 @@ def algthm(i):
     elif i == 6:
         print(" ___________.._______ \n| .__________))______| \n| | / /      || \n| |/ /       || \n| | /        ||.-''. \n| |/         |/  _  \ \n| |          ||  `/,| \n| |          (\\`_.' \n| |         .-`--'. \n| |        /Y . . Y\ \n| |       // |   | \\ \n| |      //  | . |  \\ \n| |     ')   |   |   (` \n| |          || || \n| |          || || \n| |          || || \n| |          || || \n| |         / | | \\ \n==========|_`-' `-' |===| \n|=|=======\ \       '=|=| \n| |        \ \        | | \n: :         \ \       : : \n. .          `'       . . \n")
         print(indicate)    
-        time.sleep(2)
-        print('/// YOU LOST ///')
+        time.sleep(.5)
+        print('/// YOU LOST... SECRET WORD: {WORD} ///'.format( WORD = word.upper()))
 
     print(word)
     
@@ -73,7 +74,7 @@ def algthm(i):
         print('Wrong letters: ' + str(wrong))
 
     if indicate.count('_') == 0:
-        print('/// YOU WON ///')
+        print('/// CONGRATULATIONS... SECRET WORD: {WORD} ///'.format(WORD = word.upper()))
         i = 6
 
     if i != 6:
