@@ -25,9 +25,7 @@ for i in range(wordLength):
 #start the visual 
 def algthm(i):
     letter = input('Try a letter: ')
-    
     letter.strip()
-    
     
     # add the words to the part that is supposed to be if u answered correct or missed
     if not letter in new:
@@ -38,8 +36,6 @@ def algthm(i):
             place = new.index(letter)
             indicate[place] = letter
             new[place] = '.'
-
-            
 
     time.sleep(.5)
 
@@ -67,8 +63,7 @@ def algthm(i):
         time.sleep(.5)
         print('/// YOU LOST... SECRET WORD: {WORD} ///'.format( WORD = word.upper()))
 
-    print(word)
-    
+    #print(word)    
     time.sleep(1)
     if len(wrong) != 0:
         print('Wrong letters: ' + str(wrong))
